@@ -1,0 +1,34 @@
+{
+  "name": "EduAdvisor Backend",
+  "description": "Backend API for EduAdvisor career guidance platform",
+  "repository": "https://github.com/Shivansh-sp/eduvisor",
+  "logo": "https://raw.githubusercontent.com/Shivansh-sp/eduvisor/main/advisor-frontend/public/logo192.png",
+  "keywords": ["node", "express", "mongodb", "career-guidance"],
+  "image": "heroku/nodejs",
+  "stack": "heroku-22",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "NODE_ENV": {
+      "description": "Environment",
+      "value": "production"
+    },
+    "MONGODB_URI": {
+      "description": "MongoDB connection string",
+      "required": true
+    },
+    "JWT_SECRET": {
+      "description": "JWT secret key",
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}
