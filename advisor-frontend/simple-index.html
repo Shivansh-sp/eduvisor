@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAdvisor - Educational Guidance Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold">🎓 EduAdvisor</h1>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-blue-200 transition-colors">Home</a>
+                    <a href="#assessment" class="hover:text-blue-200 transition-colors">Assessment</a>
+                    <a href="#careers" class="hover:text-blue-200 transition-colors">Careers</a>
+                    <a href="#colleges" class="hover:text-blue-200 transition-colors">Colleges</a>
+                    <a href="#login" class="bg-white text-purple-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-5xl font-bold mb-6">Your Educational Journey Starts Here</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Get personalized guidance for your academic and career decisions. Discover your potential with our comprehensive assessment tools and expert recommendations.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">Start Assessment</button>
+                <button class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors">Explore Careers</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-4">Why Choose EduAdvisor?</h3>
+                <p class="text-xl text-gray-600">Comprehensive tools to guide your educational decisions</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="card-hover bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                    <div class="text-4xl mb-4">🧠</div>
+                    <h4 class="text-xl font-semibold mb-3 text-gray-900">Aptitude Assessment</h4>
+                    <p class="text-gray-600">Discover your strengths and interests through our comprehensive assessment tools.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="card-hover bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h4 class="text-xl font-semibold mb-3 text-gray-900">Career Mapping</h4>
+                    <p class="text-gray-600">Get personalized career recommendations based on your skills and interests.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="card-hover bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                    <div class="text-4xl mb-4">🏛️</div>
+                    <h4 class="text-xl font-semibold mb-3 text-gray-900">College Directory</h4>
+                    <p class="text-gray-600">Explore government colleges and universities that match your career goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assessment Section -->
+    <section id="assessment" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-4">Take Your Assessment</h3>
+                <p class="text-xl text-gray-600">Answer a few questions to get started</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">What are your main interests?</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="checkbox" class="mr-2"> Science & Technology
+                            </label>
+                            <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="checkbox" class="mr-2"> Arts & Humanities
+                            </label>
+                            <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="checkbox" class="mr-2"> Business & Commerce
+                            </label>
+                            <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="checkbox" class="mr-2"> Medicine & Health
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">What's your preferred learning style?</label>
+                        <select class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <option>Visual (Charts, diagrams, videos)</option>
+                            <option>Auditory (Lectures, discussions)</option>
+                            <option>Kinesthetic (Hands-on, practical)</option>
+                            <option>Reading/Writing (Texts, notes)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+                        Get My Recommendations
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h5 class="text-xl font-bold mb-4">🎓 EduAdvisor</h5>
+                    <p class="text-gray-400">Your trusted partner in educational guidance and career planning.</p>
+                </div>
+                <div>
+                    <h6 class="font-semibold mb-4">Quick Links</h6>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#assessment" class="hover:text-white transition-colors">Assessment</a></li>
+                        <li><a href="#careers" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#colleges" class="hover:text-white transition-colors">Colleges</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 class="font-semibold mb-4">Resources</h6>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Career Guide</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">College Rankings</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Scholarships</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 class="font-semibold mb-4">Contact</h6>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📧 info@eduadvisor.com</li>
+                        <li>📞 +1 (555) 123-4567</li>
+                        <li>📍 123 Education St, Learning City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 EduAdvisor. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add some animation to cards
+            const cards = document.querySelectorAll('.card-hover');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Simple form handling
+            const assessmentButton = document.querySelector('button[class*="bg-purple-600"]');
+            if (assessmentButton) {
+                assessmentButton.addEventListener('click', function() {
+                    alert('Assessment feature coming soon! This is a demo version.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
