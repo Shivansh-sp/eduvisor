@@ -3,7 +3,7 @@ services:
     name: eduvisor-backend
     env: node
     plan: free
-    rootDir: ./advisor-backend
+    rootDir: advisor-backend
     buildCommand: npm run build
     startCommand: npm start
     envVars:
@@ -17,9 +17,9 @@ services:
   - type: web
     name: eduvisor-frontend
     env: static
-    rootDir: ./advisor-frontend
+    rootDir: advisor-frontend
     buildCommand: npm run build
-    staticPublishPath: ./build
+    staticPublishPath: build
     envVars:
       - key: REACT_APP_API_URL
         sync: false
