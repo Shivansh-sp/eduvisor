@@ -48,8 +48,10 @@ const Colleges: React.FC = () => {
 
   // Handle viewing college details
   const handleViewDetails = (college: College) => {
+    console.log('View Details clicked for:', college.name);
     setSelectedCollege(college);
     setShowModal(true);
+    console.log('Modal should be showing:', true);
   };
 
   // Filter and sort colleges
@@ -224,6 +226,10 @@ const Colleges: React.FC = () => {
           <p className="text-gray-600">
             Found {filteredColleges.length} college{filteredColleges.length !== 1 ? 's' : ''}
           </p>
+          {/* Debug info */}
+          <p className="text-xs text-gray-400">
+            Modal state: {showModal ? 'Open' : 'Closed'} | Selected: {selectedCollege?.name || 'None'}
+          </p>
         </div>
 
         {/* Colleges Grid */}
@@ -321,8 +327,16 @@ const Colleges: React.FC = () => {
 
       {/* College Details Modal */}
       {showModal && selectedCollege && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+          style={{ zIndex: 9999 }}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setShowModal(false);
+            }
+          }}
+        >
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
             <div className="p-6">
               <div className="flex justify-between items-start mb-6">
                 <div className="flex-1">
