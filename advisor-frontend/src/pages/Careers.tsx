@@ -1,85 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
+import { careersData, getCareersByCategory, searchCareers, getCategories, Career } from '../services/careerData';
 
 const Careers: React.FC = () => {
   const { user } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [savedCareers, setSavedCareers] = useState<number[]>([]);
-  const [selectedCareer, setSelectedCareer] = useState<any>(null);
+  const [selectedCareer, setSelectedCareer] = useState<Career | null>(null);
   const [showModal, setShowModal] = useState(false);
 
-  const careers = [
-    {
-      id: 1,
-      title: "Software Engineer",
-      category: "Technology",
-      description: "Design, develop, and maintain software applications and systems.",
-      salary: "₹6-15 LPA",
-      education: "B.Tech Computer Science",
-      skills: ["Programming", "Problem Solving", "Teamwork"],
-      growth: "High",
-      demand: "Very High"
-    },
-    {
-      id: 2,
-      title: "Data Scientist",
-      category: "Technology",
-      description: "Analyze complex data to help organizations make informed decisions.",
-      salary: "₹8-20 LPA",
-      education: "B.Tech/M.Sc in Data Science",
-      skills: ["Statistics", "Machine Learning", "Python"],
-      growth: "Very High",
-      demand: "High"
-    },
-    {
-      id: 3,
-      title: "Civil Engineer",
-      category: "Engineering",
-      description: "Design and oversee construction of infrastructure projects.",
-      salary: "₹4-12 LPA",
-      education: "B.Tech Civil Engineering",
-      skills: ["Design", "Project Management", "Technical Drawing"],
-      growth: "Medium",
-      demand: "High"
-    },
-    {
-      id: 4,
-      title: "Doctor",
-      category: "Healthcare",
-      description: "Diagnose and treat patients, provide medical care and advice.",
-      salary: "₹8-25 LPA",
-      education: "MBBS + Specialization",
-      skills: ["Medical Knowledge", "Communication", "Empathy"],
-      growth: "High",
-      demand: "Very High"
-    },
-    {
-      id: 5,
-      title: "Teacher",
-      category: "Education",
-      description: "Educate students and help them develop knowledge and skills.",
-      salary: "₹3-8 LPA",
-      education: "B.Ed + Subject Specialization",
-      skills: ["Communication", "Patience", "Subject Knowledge"],
-      growth: "Medium",
-      demand: "High"
-    },
-    {
-      id: 6,
-      title: "Marketing Manager",
-      category: "Business",
-      description: "Develop and implement marketing strategies to promote products or services.",
-      salary: "₹5-15 LPA",
-      education: "MBA Marketing",
-      skills: ["Creativity", "Analytics", "Communication"],
-      growth: "High",
-      demand: "Medium"
-    }
-  ];
-
-  const categories = ["All", "Technology", "Engineering", "Healthcare", "Education", "Business"];
+  // Get categories from career data
+  const allCategories = ["All", ...categories];
 
   // Load saved careers from localStorage
   useEffect(() => {
@@ -104,7 +37,7 @@ const Careers: React.FC = () => {
     localStorage.setItem('savedCareers', JSON.stringify(newSavedCareers));
     
     // Show success message
-    const career = careers.find(c => c.id === careerId);
+    const career = careersData.find(c => c.id === careerId);
     if (career) {
       const message = isCurrentlySaved 
         ? `${career.title} removed from saved careers`
@@ -124,17 +57,29 @@ const Careers: React.FC = () => {
   };
 
   // Show detailed career information
-  const handleLearnMore = (career: any) => {
+  const handleLearnMore = (career: Career) => {
     setSelectedCareer(career);
     setShowModal(true);
   };
 
-  const filteredCareers = careers.filter(career => {
-    const matchesSearch = career.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         career.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === '' || selectedCategory === 'All' || career.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
+  // Filter careers based on search and category
+  const getFilteredCareers = () => {
+    let filtered = careersData;
+
+    // Apply search filter
+    if (searchTerm) {
+      filtered = searchCareers(searchTerm);
+    }
+
+    // Apply category filter
+    if (selectedCategory && selectedCategory !== 'All') {
+      filtered = filtered.filter(career => career.category === selectedCategory);
+    }
+
+    return filtered;
+  };
+
+  const filteredCareers = getFilteredCareers();
 
   const getGrowthColor = (growth: string) => {
     switch (growth) {
@@ -189,7 +134,7 @@ const Careers: React.FC = () => {
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                {categories.map(category => (
+                {allCategories.map(category => (
                   <option key={category} value={category}>{category}</option>
                 ))}
               </select>
@@ -339,57 +284,98 @@ const Careers: React.FC = () => {
                   <p className="text-gray-600">{selectedCareer.description}</p>
                 </div>
 
-                {/* Salary & Growth */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Key Stats */}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                   <div className="bg-green-50 p-4 rounded-lg">
                     <h4 className="font-semibold text-green-800 mb-1">Salary Range</h4>
-                    <p className="text-2xl font-bold text-green-600">{selectedCareer.salary}</p>
+                    <p className="text-xl font-bold text-green-600">{selectedCareer.salary}</p>
                   </div>
                   <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-blue-800 mb-1">Growth Potential</h4>
-                    <p className="text-2xl font-bold text-blue-600">{selectedCareer.growth}</p>
+                    <h4 className="font-semibold text-blue-800 mb-1">Growth</h4>
+                    <p className="text-xl font-bold text-blue-600">{selectedCareer.growth}</p>
                   </div>
                   <div className="bg-orange-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-orange-800 mb-1">Job Demand</h4>
-                    <p className="text-2xl font-bold text-orange-600">{selectedCareer.demand}</p>
+                    <h4 className="font-semibold text-orange-800 mb-1">Demand</h4>
+                    <p className="text-xl font-bold text-orange-600">{selectedCareer.demand}</p>
+                  </div>
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-purple-800 mb-1">Experience</h4>
+                    <p className="text-xl font-bold text-purple-600">{selectedCareer.experience}</p>
                   </div>
                 </div>
 
-                {/* Education Requirements */}
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Education Requirements</h3>
-                  <p className="text-gray-600">{selectedCareer.education}</p>
+                {/* Education & Requirements */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Education Requirements</h3>
+                    <p className="text-gray-600">{selectedCareer.education}</p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Key Skills</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedCareer.skills.map((skill: string, index: number) => (
+                        <span key={index} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
-                {/* Key Skills */}
+                {/* Responsibilities */}
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Key Skills Required</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Key Responsibilities</h3>
+                  <ul className="list-disc list-inside space-y-1">
+                    {selectedCareer.responsibilities.map((responsibility: string, index: number) => (
+                      <li key={index} className="text-gray-600">{responsibility}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Requirements */}
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Requirements</h3>
+                  <ul className="list-disc list-inside space-y-1">
+                    {selectedCareer.requirements.map((requirement: string, index: number) => (
+                      <li key={index} className="text-gray-600">{requirement}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Career Path */}
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Career Progression</h3>
                   <div className="flex flex-wrap gap-2">
-                    {selectedCareer.skills.map((skill: string, index: number) => (
-                      <span key={index} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-                        {skill}
+                    {selectedCareer.careerPath.map((role: string, index: number) => (
+                      <span key={index} className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
+                        {role}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                {/* Career Path */}
+                {/* Future Scope */}
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Career Path</h3>
-                  <div className="space-y-2">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                      <span className="text-gray-600">Entry Level (0-2 years)</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                      <span className="text-gray-600">Mid Level (3-5 years)</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                      <span className="text-gray-600">Senior Level (6+ years)</span>
-                    </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Future Scope</h3>
+                  <p className="text-gray-600">{selectedCareer.futureScope}</p>
+                </div>
+
+                {/* Top Companies */}
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Top Companies</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedCareer.companies.map((company: string, index: number) => (
+                      <span key={index} className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
+                        {company}
+                      </span>
+                    ))}
                   </div>
+                </div>
+
+                {/* Work Environment */}
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Work Environment</h3>
+                  <p className="text-gray-600">{selectedCareer.workEnvironment}</p>
                 </div>
 
                 {/* Action Buttons */}
