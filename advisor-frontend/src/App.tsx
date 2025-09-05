@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Assessment from './pages/Assessment';
+import AssessmentResults from './pages/AssessmentResults';
 import Colleges from './pages/Colleges';
 import CollegeDetail from './pages/CollegeDetail';
 import Careers from './pages/Careers';
@@ -43,6 +44,11 @@ function App() {
                     <Route path="assessment" element={
                       <ProtectedRoute>
                         <Assessment />
+                      </ProtectedRoute>
+                    } />
+                    <Route path="assessment-results" element={
+                      <ProtectedRoute>
+                        <AssessmentResults />
                       </ProtectedRoute>
                     } />
                     <Route path="timeline" element={

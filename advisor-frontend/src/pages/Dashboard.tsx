@@ -281,6 +281,14 @@ const Dashboard: React.FC = () => {
                     <p><strong>Top Holland Codes:</strong> {assessmentResults.primaryCode} + {assessmentResults.secondaryCode}</p>
                     <p><strong>Recommended:</strong> {assessmentResults.profile.careers.slice(0, 2).join(', ')}</p>
                   </div>
+                  <div className="mt-3">
+                    <Link
+                      to="/assessment-results"
+                      className="inline-flex items-center px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                    >
+                      View Detailed Results
+                    </Link>
+                  </div>
                 </div>
               ) : (
                 <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
@@ -299,17 +307,31 @@ const Dashboard: React.FC = () => {
               {/* Saved Careers */}
               {savedCareers.length > 0 ? (
                 <div className="p-4 rounded-xl bg-blue-50 border border-blue-200">
-                  <div className="flex items-center space-x-3 mb-2">
-                    <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                      <span className="text-white text-sm">🎯</span>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                        <span className="text-white text-sm">🎯</span>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900">Saved Careers ({savedCareers.length})</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-semibold text-gray-900">Saved Careers ({savedCareers.length})</p>
-                    </div>
+                    <Link
+                      to="/careers"
+                      className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+                    >
+                      View All →
+                    </Link>
                   </div>
                   <div className="space-y-1">
                     {savedCareers.slice(0, 3).map((career, index) => (
-                      <p key={index} className="text-sm text-gray-700">• {career.title}</p>
+                      <Link
+                        key={index}
+                        to="/careers"
+                        className="block text-sm text-gray-700 hover:text-blue-600 transition-colors"
+                      >
+                        • {career.title}
+                      </Link>
                     ))}
                     {savedCareers.length > 3 && (
                       <p className="text-sm text-gray-500">+{savedCareers.length - 3} more</p>
@@ -333,17 +355,31 @@ const Dashboard: React.FC = () => {
               {/* Saved Colleges */}
               {savedColleges.length > 0 ? (
                 <div className="p-4 rounded-xl bg-purple-50 border border-purple-200">
-                  <div className="flex items-center space-x-3 mb-2">
-                    <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center">
-                      <span className="text-white text-sm">🏛️</span>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center">
+                        <span className="text-white text-sm">🏛️</span>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900">Saved Colleges ({savedColleges.length})</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-semibold text-gray-900">Saved Colleges ({savedColleges.length})</p>
-                    </div>
+                    <Link
+                      to="/colleges"
+                      className="text-purple-600 hover:text-purple-700 text-sm font-medium"
+                    >
+                      View All →
+                    </Link>
                   </div>
                   <div className="space-y-1">
                     {savedColleges.slice(0, 3).map((college, index) => (
-                      <p key={index} className="text-sm text-gray-700">• {college.name}</p>
+                      <Link
+                        key={index}
+                        to="/colleges"
+                        className="block text-sm text-gray-700 hover:text-purple-600 transition-colors"
+                      >
+                        • {college.name}
+                      </Link>
                     ))}
                     {savedColleges.length > 3 && (
                       <p className="text-sm text-gray-500">+{savedColleges.length - 3} more</p>
