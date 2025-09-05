@@ -7,7 +7,10 @@ import { useAuth } from '../contexts/AuthContext';
 const Layout: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
+  const isAuthPage = location.pathname === '/login' || 
+                     location.pathname === '/register' || 
+                     location.pathname.startsWith('/login') || 
+                     location.pathname.startsWith('/register');
   const { pageRef, enterPage, exitPage } = usePageTransition();
   const navRef = useRef<HTMLElement>(null);
   
@@ -219,7 +222,19 @@ const Layout: React.FC = () => {
 
 // Chatbot component
 const Chatbot: React.FC = () => {
+  const location = useLocation();
+  
   useEffect(() => {
+    // Double check that we're not on auth pages
+    const isAuthPage = location.pathname === '/login' || 
+                       location.pathname === '/register' || 
+                       location.pathname.startsWith('/login') || 
+                       location.pathname.startsWith('/register');
+    
+    if (isAuthPage) {
+      return;
+    }
+
     // Load Botpress scripts only on main pages
     const loadBotpress = () => {
       // Check if scripts are already loaded
@@ -246,7 +261,7 @@ const Chatbot: React.FC = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [location.pathname]);
 
   return null; // This component doesn't render anything visible
 };

@@ -12,6 +12,7 @@ const Careers: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
 
   // Get categories from career data
+  const categories = getCategories();
   const allCategories = ["All", ...categories];
 
   // Load saved careers from localStorage
