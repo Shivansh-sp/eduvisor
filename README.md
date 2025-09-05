@@ -152,7 +152,7 @@ Based on assessment results, users receive career profiles with:
 ## 🚀 Live Demo
 
 The application is deployed and available at:
-- **Frontend**: [View Live Demo](https://eduvisor.netlify.app)
+- **Frontend**: [View Live Demo](https://eduvisor-frontend.onrender.com)
 - **Backend API**: [API Documentation](https://eduvisor-backend.railway.app)
 
 ## 🔧 API Endpoints
