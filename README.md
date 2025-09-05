@@ -1,6 +1,6 @@
-# EduAdvisor - Career Guidance & Educational Planning Platform
+# EduAdvisor - AI-Powered Career Guidance Platform
 
-A comprehensive career guidance platform that helps students discover their ideal career paths using scientifically-based Holland Codes (RIASEC) assessment and provides personalized recommendations for careers, colleges, and educational pathways.
+A comprehensive career guidance platform that helps students discover their ideal career paths using scientifically-based Holland Codes (RIASEC) assessment. The platform provides personalized recommendations for careers, colleges, and educational pathways with a focus on government institutions and real-world data.
 
 ## 🚀 Features
 
@@ -18,11 +18,12 @@ A comprehensive career guidance platform that helps students discover their idea
 - Save favorite careers to profile
 - Filter by categories and interests
 
-### 🏛️ College Directory
-- Comprehensive database of government colleges and universities
-- Search and filter by location, type, and courses
-- Save preferred colleges
-- Detailed college information and course offerings
+### 🏛️ Government College Directory
+- Comprehensive database of 30+ Central and State Government institutions
+- Real data from official sources including IITs, NITs, Central Universities, and State Universities
+- Advanced search and filtering by location, type, courses, and NIRF rankings
+- Detailed information including placement stats, fees, admission criteria, and contact details
+- Save preferred colleges to personal profile
 
 ### 📊 Functional Dashboard
 - Assessment results display with Holland Code scores
@@ -87,14 +88,14 @@ eduvisor/
 
 ### Prerequisites
 - Node.js (v16 or higher)
-- MongoDB (running locally or cloud instance)
+- MongoDB Atlas account or local MongoDB instance
 - npm or yarn
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/eduvisor.git
+   git clone https://github.com/Shivansh-sp/eduvisor.git
    cd eduvisor
    ```
 
@@ -131,8 +132,8 @@ eduvisor/
    ```
 
 7. **Access the application**
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:5000
+   - Frontend: Open your browser to the development server URL
+   - Backend API: Available on the configured port
 
 ## 🧪 Assessment Details
 
@@ -150,6 +151,12 @@ Based on assessment results, users receive personalized career profiles with:
 - Suitable degree programs
 - Future scope and opportunities
 - Government and private sector options
+
+## 🚀 Live Demo
+
+The application is deployed and available at:
+- **Frontend**: [View Live Demo](https://eduvisor.netlify.app)
+- **Backend API**: [API Documentation](https://eduvisor-backend.railway.app)
 
 ## 🔧 API Endpoints
 
@@ -169,6 +176,15 @@ Based on assessment results, users receive personalized career profiles with:
 - `POST /api/careers/save` - Save career
 - `POST /api/colleges/save` - Save college
 
+## 🌐 Deployment
+
+For production deployment instructions, see [deploy.md](advisor-frontend/deploy.md)
+
+### Quick Deploy
+- **Frontend**: Deploy to Netlify with `advisor-frontend` as base directory
+- **Backend**: Deploy to Railway with `advisor-backend` as root directory
+- **Database**: Use MongoDB Atlas for production database
+
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -181,9 +197,17 @@ Based on assessment results, users receive personalized career profiles with:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 📊 Data Sources
+
+- **College Data**: Sourced from official government directories and AISHE (All India Survey on Higher Education)
+- **Career Information**: Based on industry standards and government career guidance resources
+- **Assessment Model**: Holland Codes (RIASEC) - scientifically validated career assessment framework
+- **Institution Rankings**: NIRF (National Institutional Ranking Framework) data
+
 ## 🙏 Acknowledgments
 
 - Holland Codes (RIASEC) model for career assessment
+- AISHE and government education directories for college data
 - Anime.js for beautiful animations
 - Tailwind CSS for modern styling
 - React community for excellent documentation

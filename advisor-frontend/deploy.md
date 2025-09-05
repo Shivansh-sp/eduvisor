@@ -1,45 +1,65 @@
-# Quick Deployment Guide
+# Deployment Guide
 
-## For Frontend Demo (Netlify)
+## Production Deployment
 
-1. Go to [netlify.com](https://netlify.com)
-2. Sign up/Login with GitHub
-3. Click "New site from Git"
-4. Select your `eduvisor` repository
-5. Settings:
+### Frontend Deployment (Netlify)
+
+1. **Connect Repository**
+   - Go to [netlify.com](https://netlify.com)
+   - Sign up/Login with GitHub
+   - Click "New site from Git"
+   - Select your `eduvisor` repository
+
+2. **Configure Build Settings**
    - **Base directory**: `advisor-frontend`
    - **Build command**: `npm run build`
    - **Publish directory**: `build`
-6. Deploy!
 
-## For Full Stack (Railway + Netlify)
+3. **Environment Variables**
+   - `REACT_APP_API_URL`: Your backend API URL
 
-### Backend (Railway):
-1. Go to [railway.app](https://railway.app)
-2. Connect GitHub
-3. New Project → Deploy from GitHub
-4. Select `eduvisor` repo
-5. Settings:
+4. **Deploy**
+   - Click "Deploy site"
+   - Your frontend will be available at `https://your-app-name.netlify.app`
+
+### Backend Deployment (Railway)
+
+1. **Connect Repository**
+   - Go to [railway.app](https://railway.app)
+   - Connect GitHub account
+   - New Project → Deploy from GitHub
+   - Select `eduvisor` repository
+
+2. **Configure Service**
    - **Root directory**: `advisor-backend`
    - **Build command**: `npm run build`
    - **Start command**: `npm start`
-6. Add environment variables:
-   - `MONGODB_URI` = Your MongoDB connection
-   - `JWT_SECRET` = Any secure string
-   - `NODE_ENV` = `production`
 
-### Frontend (Netlify):
-1. Same as above, but add environment variable:
-   - `REACT_APP_API_URL` = Your Railway backend URL
+3. **Environment Variables**
+   - `MONGODB_URI`: Your MongoDB connection string
+   - `JWT_SECRET`: Secure random string for JWT signing
+   - `NODE_ENV`: `production`
 
-## MongoDB Setup
+4. **Deploy**
+   - Railway will automatically build and deploy
+   - Your backend will be available at `https://your-app-name.railway.app`
 
-For production, you can use:
-- [MongoDB Atlas](https://cloud.mongodb.com) (Free tier available)
+### Database Setup
+
+For production, use one of these MongoDB services:
+- [MongoDB Atlas](https://cloud.mongodb.com) (Recommended - Free tier available)
 - [Railway MongoDB](https://railway.app/template/mongodb)
 
-## Quick Demo URL
+### Full Stack Deployment
 
-Once deployed, your app will be available at:
-- Frontend: `https://your-app-name.netlify.app`
-- Backend: `https://your-app-name.railway.app`
+1. Deploy backend first to get the API URL
+2. Update frontend environment variable with backend URL
+3. Deploy frontend
+4. Test the complete application
+
+## Alternative Deployment Platforms
+
+- **Vercel**: For frontend deployment
+- **Render**: For both frontend and backend
+- **Heroku**: For backend deployment
+- **DigitalOcean**: For full-stack deployment
