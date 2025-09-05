@@ -26,6 +26,7 @@ declare global {
       open: () => void;
       init: (config: any) => void;
     };
+    botpressWebchat?: any;
   }
 }
 
