@@ -21,7 +21,11 @@ declare global {
         };
       };
     };
-    botpressWebchat?: any;
+    botpress?: {
+      on: (event: string, callback: () => void) => void;
+      open: () => void;
+      init: (config: any) => void;
+    };
   }
 }
 

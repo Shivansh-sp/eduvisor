@@ -3,7 +3,6 @@ import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import anime from 'animejs';
 import { usePageTransition } from '../hooks/useAnimations';
 import { useAuth } from '../contexts/AuthContext';
-import NewChatbot from './NewChatbot';
 
 const Layout: React.FC = () => {
   const location = useLocation();
@@ -38,7 +37,68 @@ const Layout: React.FC = () => {
 
     // Page transition animation
     enterPage();
-  }, [location.pathname, enterPage]);
+
+    // Load chatbot only on non-auth pages
+    if (!isAuthPage) {
+      loadChatbot();
+    }
+  }, [location.pathname, enterPage, isAuthPage]);
+
+  const loadChatbot = () => {
+    // Check if chatbot is already loaded
+    if (window.botpress) {
+      return;
+    }
+
+    // Load Botpress script
+    const script = document.createElement('script');
+    script.src = 'https://cdn.botpress.cloud/webchat/v3.2/inject.js';
+    script.onload = () => {
+      // Initialize chatbot after script loads
+      if (window.botpress) {
+        window.botpress.on("webchat:ready", () => {
+          if (window.botpress) {
+            window.botpress.open();
+          }
+        });
+
+        window.botpress.init({
+        "botId": "292ca00c-8fa6-48f6-8510-a171dac07258",
+        "configuration": {
+          "version": "v2",
+          "composerPlaceholder": "",
+          "botName": "Eduvisor Bot",
+          "botAvatar": "https://files.bpcontent.cloud/2025/09/04/14/20250904143454-5VGRCXHN.jpeg",
+          "botDescription": "I'm your Career & Education Guide. I can help you discover the right subject stream, explore courses in nearby government colleges, and understand career options. Let's plan your future together!",
+          "fabImage": "https://files.bpcontent.cloud/2025/09/04/14/20250904143454-5VGRCXHN.jpeg",
+          "website": {},
+          "email": {
+            "title": "shivanshpushkarna@gmail.com",
+            "link": "shivanshpushkarna@gmail.com"
+          },
+          "phone": {
+            "title": "+91 7696786003",
+            "link": "+91 7696786003"
+          },
+          "termsOfService": {},
+          "privacyPolicy": {},
+          "color": "#A7C",
+          "variant": "soft",
+          "headerVariant": "solid",
+          "themeMode": "light",
+          "fontFamily": "AR One Sans",
+          "radius": 3,
+          "feedbackEnabled": true,
+          "footer": "[By team Code Tyrans]",
+          "allowFileUpload": true
+        },
+        "clientId": "e76f290a-f8f5-457c-9d7f-87dadbce3ac8",
+        "selector": "#webchat"
+        });
+      }
+    };
+    document.head.appendChild(script);
+  };
 
   if (isAuthPage) {
     return <Outlet />;
@@ -213,8 +273,26 @@ const Layout: React.FC = () => {
         </div>
       </footer>
 
-      {/* New Chatbot - Only load on main pages, not on auth pages */}
-      <NewChatbot isVisible={!isAuthPage} />
+      {/* Chatbot Container - Only on non-auth pages */}
+      {!isAuthPage && (
+        <>
+          <style>
+            {`
+              #webchat .bpWebchat {
+                position: unset;
+                width: 100%;
+                height: 100%;
+                max-height: 100%;
+                max-width: 100%;
+              }
+              #webchat .bpFab {
+                display: none;
+              }
+            `}
+          </style>
+          <div id="webchat" style={{ width: '500px', height: '500px' }}></div>
+        </>
+      )}
     </div>
   );
 };
