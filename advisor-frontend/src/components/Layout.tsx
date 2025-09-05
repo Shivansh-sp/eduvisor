@@ -11,7 +11,7 @@ const Layout: React.FC = () => {
                      location.pathname === '/register' || 
                      location.pathname.startsWith('/login') || 
                      location.pathname.startsWith('/register');
-  const { pageRef, enterPage, exitPage } = usePageTransition();
+  const { pageRef, enterPage } = usePageTransition();
   const navRef = useRef<HTMLElement>(null);
   
   // Authentication state
@@ -38,40 +38,9 @@ const Layout: React.FC = () => {
     // Page transition animation
     enterPage();
 
-    // Load chatbot only on non-auth pages
-    if (!isAuthPage) {
-      loadChatbot();
-    }
   }, [location.pathname, enterPage, isAuthPage]);
 
 
-  const loadChatbot = () => {
-    // Check if chatbot is already loaded
-    if (window.botpressWebchat) {
-      console.log('Chatbot already loaded');
-      return;
-    }
-
-    console.log('Loading chatbot...');
-
-    // Load Botpress inject script
-    const injectScript = document.createElement('script');
-    injectScript.src = 'https://cdn.botpress.cloud/webchat/v3.2/inject.js';
-    injectScript.defer = true;
-    document.head.appendChild(injectScript);
-
-    // Load Botpress configuration script
-    const configScript = document.createElement('script');
-    configScript.src = 'https://files.bpcontent.cloud/2025/03/29/10/20250329102306-6BV2I5JN.js';
-    configScript.defer = true;
-    configScript.onload = () => {
-      console.log('Botpress configuration loaded');
-    };
-    configScript.onerror = () => {
-      console.error('Failed to load Botpress configuration');
-    };
-    document.head.appendChild(configScript);
-  };
 
   if (isAuthPage) {
     return <Outlet />;
@@ -227,15 +196,15 @@ const Layout: React.FC = () => {
               Your comprehensive guide to educational and career success
             </p>
             <div className="flex justify-center space-x-8 mb-8">
-              <a href="#" className="text-gray-400 hover:text-blue-400 text-sm font-medium transition-colors duration-300 hover:scale-105 transform">
+              <button className="text-gray-400 hover:text-blue-400 text-sm font-medium transition-colors duration-300 hover:scale-105 transform">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 text-sm font-medium transition-colors duration-300 hover:scale-105 transform">
+              </button>
+              <button className="text-gray-400 hover:text-blue-400 text-sm font-medium transition-colors duration-300 hover:scale-105 transform">
                 Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 text-sm font-medium transition-colors duration-300 hover:scale-105 transform">
+              </button>
+              <button className="text-gray-400 hover:text-blue-400 text-sm font-medium transition-colors duration-300 hover:scale-105 transform">
                 Contact Us
-              </a>
+              </button>
             </div>
             <div className="border-t border-gray-700 pt-8">
               <p className="text-gray-500 text-sm">
@@ -246,31 +215,6 @@ const Layout: React.FC = () => {
         </div>
       </footer>
 
-      {/* Chatbot - Only on non-auth pages */}
-      {!isAuthPage && (
-        <>
-          <style>
-            {`
-              /* Custom styling for Botpress chat bubble */
-              .bp-widget {
-                z-index: 1000 !important;
-              }
-              .bp-widget .bp-widget-button {
-                background: #3B82F6 !important;
-                border-radius: 50% !important;
-                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
-              }
-              .bp-widget .bp-widget-button:hover {
-                transform: scale(1.1) !important;
-                transition: transform 0.2s ease !important;
-              }
-              .bp-widget .bp-widget-button svg {
-                fill: white !important;
-              }
-            `}
-          </style>
-        </>
-      )}
     </div>
   );
 };

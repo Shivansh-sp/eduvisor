@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import anime from 'animejs';
 import { useScrollReveal, useStaggeredAnimation, useMagneticEffect } from '../hooks/useAnimations';
 import { useAuth } from '../contexts/AuthContext';
 
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [assessmentResults, setAssessmentResults] = useState<any>(null);
   const [savedCareers, setSavedCareers] = useState<any[]>([]);
   const [savedColleges, setSavedColleges] = useState<any[]>([]);
@@ -89,12 +90,6 @@ const Dashboard: React.FC = () => {
     }, 1500);
 
   }, [animateStats, animateActions, addScrollElement]);
-  const stats = [
-    { label: 'Assessment Score', value: '85%', color: 'text-green-600' },
-    { label: 'Recommended Careers', value: '12', color: 'text-blue-600' },
-    { label: 'Colleges Found', value: '8', color: 'text-purple-600' },
-    { label: 'Deadlines', value: '3', color: 'text-orange-600' }
-  ];
 
   // Dynamic stats based on actual data
   const dynamicStats = [
@@ -143,38 +138,71 @@ const Dashboard: React.FC = () => {
         {/* Stats Grid */}
         <div ref={statsRef} className="mb-12">
           <div ref={statsContainerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {dynamicStats.map((stat, index) => (
-              <div 
-                key={index} 
-                className="group relative bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl hover:shadow-2xl p-8 border border-white/20 transition-all duration-500 transform hover:-translate-y-2"
-                style={{ 
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.8) 100%)',
-                  backdropFilter: 'blur(20px)'
-                }}
-              >
-                {/* Hover effect overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
-                      <div className="text-white text-xl font-bold">
-                        {index === 0 ? '📊' : index === 1 ? '🎯' : index === 2 ? '🏛️' : '⏰'}
+            {dynamicStats.map((stat, index) => {
+              const handleStatClick = () => {
+                switch (index) {
+                  case 0: // Assessment Status
+                    if (assessmentResults) {
+                      navigate('/assessment-results');
+                    } else {
+                      navigate('/assessment');
+                    }
+                    break;
+                  case 1: // Saved Careers
+                    navigate('/careers');
+                    break;
+                  case 2: // Saved Colleges
+                    navigate('/colleges');
+                    break;
+                  case 3: // Profile Complete
+                    navigate('/profile');
+                    break;
+                  default:
+                    break;
+                }
+              };
+
+              return (
+                <div 
+                  key={index} 
+                  onClick={handleStatClick}
+                  className="group relative bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl hover:shadow-2xl p-8 border border-white/20 transition-all duration-500 transform hover:-translate-y-2 cursor-pointer"
+                  style={{ 
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.8) 100%)',
+                    backdropFilter: 'blur(20px)'
+                  }}
+                >
+                  {/* Hover effect overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                        <div className="text-white text-xl font-bold">
+                          {index === 0 ? '📊' : index === 1 ? '🎯' : index === 2 ? '🏛️' : '⏰'}
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-semibold text-gray-600 mb-1">{stat.label}</p>
+                        <p className={`text-3xl font-bold ${stat.color} group-hover:scale-110 transition-transform duration-300`}>
+                          {stat.value}
+                        </p>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <p className="text-sm font-semibold text-gray-600 mb-1">{stat.label}</p>
-                      <p className={`text-3xl font-bold ${stat.color} group-hover:scale-110 transition-transform duration-300`}>
-                        {stat.value}
-                      </p>
+                    
+                    {/* Click indicator */}
+                    <div className="absolute bottom-2 right-2 text-xs text-gray-400 group-hover:text-blue-500 transition-colors duration-300">
+                      Click to {index === 0 ? (assessmentResults ? 'view results' : 'take assessment') : 
+                                index === 1 ? 'view careers' : 
+                                index === 2 ? 'view colleges' : 'edit profile'}
                     </div>
                   </div>
+                  
+                  {/* Decorative corner */}
+                  <div className="absolute top-4 right-4 w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                 </div>
-                
-                {/* Decorative corner */}
-                <div className="absolute top-4 right-4 w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
