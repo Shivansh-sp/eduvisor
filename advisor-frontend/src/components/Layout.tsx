@@ -3,6 +3,7 @@ import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import anime from 'animejs';
 import { usePageTransition } from '../hooks/useAnimations';
 import { useAuth } from '../contexts/AuthContext';
+import NewChatbot from './NewChatbot';
 
 const Layout: React.FC = () => {
   const location = useLocation();
@@ -212,58 +213,11 @@ const Layout: React.FC = () => {
         </div>
       </footer>
 
-      {/* Chatbot - Only load on main pages, not on auth pages */}
-      {!isAuthPage && (
-        <Chatbot />
-      )}
+      {/* New Chatbot - Only load on main pages, not on auth pages */}
+      <NewChatbot isVisible={!isAuthPage} />
     </div>
   );
 };
 
-// Chatbot component
-const Chatbot: React.FC = () => {
-  const location = useLocation();
-  
-  useEffect(() => {
-    // Double check that we're not on auth pages
-    const isAuthPage = location.pathname === '/login' || 
-                       location.pathname === '/register' || 
-                       location.pathname.startsWith('/login') || 
-                       location.pathname.startsWith('/register');
-    
-    if (isAuthPage) {
-      return;
-    }
-
-    // Load Botpress scripts only on main pages
-    const loadBotpress = () => {
-      // Check if scripts are already loaded
-      if (window.botpressWebchat) {
-        return;
-      }
-
-      // Load the inject script
-      const injectScript = document.createElement('script');
-      injectScript.src = 'https://cdn.botpress.cloud/webchat/v3.2/inject.js';
-      injectScript.defer = true;
-      document.head.appendChild(injectScript);
-
-      // Load the bot configuration script
-      const botScript = document.createElement('script');
-      botScript.src = 'https://files.bpcontent.cloud/2025/03/29/10/20250329102306-6BV2I5JN.js';
-      botScript.defer = true;
-      document.head.appendChild(botScript);
-    };
-
-    // Load chatbot after a short delay to ensure page is ready
-    const timer = setTimeout(loadBotpress, 1000);
-    
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [location.pathname]);
-
-  return null; // This component doesn't render anything visible
-};
 
 export default Layout;
