@@ -42,24 +42,55 @@ const Layout: React.FC = () => {
     if (!isAuthPage) {
       loadChatbot();
     }
+
+    // Add keyboard event listener for Escape key
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeChatbot();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyPress);
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
   }, [location.pathname, enterPage, isAuthPage]);
+
+  // Chatbot functions
+  const openChatbot = () => {
+    const webchat = document.getElementById('webchat');
+    if (webchat) {
+      webchat.classList.add('show');
+    }
+  };
+
+  const closeChatbot = () => {
+    const webchat = document.getElementById('webchat');
+    if (webchat) {
+      webchat.classList.remove('show');
+    }
+  };
 
   const loadChatbot = () => {
     // Check if chatbot is already loaded
     if (window.botpress) {
+      console.log('Chatbot already loaded');
       return;
     }
+
+    console.log('Loading chatbot...');
 
     // Load Botpress script
     const script = document.createElement('script');
     script.src = 'https://cdn.botpress.cloud/webchat/v3.2/inject.js';
     script.onload = () => {
+      console.log('Botpress script loaded');
       // Initialize chatbot after script loads
       if (window.botpress) {
+        console.log('Initializing chatbot...');
+        
         window.botpress.on("webchat:ready", () => {
-          if (window.botpress) {
-            window.botpress.open();
-          }
+          console.log('Chatbot ready!');
         });
 
         window.botpress.init({
@@ -95,7 +126,12 @@ const Layout: React.FC = () => {
         "clientId": "e76f290a-f8f5-457c-9d7f-87dadbce3ac8",
         "selector": "#webchat"
         });
+      } else {
+        console.error('Botpress not available after script load');
       }
+    };
+    script.onerror = () => {
+      console.error('Failed to load Botpress script');
     };
     document.head.appendChild(script);
   };
@@ -179,6 +215,16 @@ const Layout: React.FC = () => {
                   <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full"></div>
                 )}
               </Link>
+              
+              {/* Chatbot Button */}
+              <button
+                onClick={openChatbot}
+                className="relative px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 text-gray-700 hover:text-blue-600 hover:bg-blue-50/50 flex items-center space-x-2"
+                title="Open Chat Assistant"
+              >
+                <span>💬</span>
+                <span>Chat</span>
+              </button>
               {loading ? (
                 <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
               ) : user ? (
@@ -278,19 +324,73 @@ const Layout: React.FC = () => {
         <>
           <style>
             {`
+              #webchat {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 9999;
+                background: rgba(0, 0, 0, 0.5);
+                display: none;
+                align-items: center;
+                justify-content: center;
+              }
+              #webchat.show {
+                display: flex !important;
+              }
               #webchat .bpWebchat {
-                position: unset;
-                width: 100%;
-                height: 100%;
-                max-height: 100%;
-                max-width: 100%;
+                position: relative;
+                width: 90%;
+                max-width: 800px;
+                height: 80%;
+                max-height: 600px;
+                border-radius: 12px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                overflow: hidden;
+                background: white;
               }
               #webchat .bpFab {
-                display: none;
+                display: none !important;
+              }
+              .chatbot-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: transparent;
+                z-index: 1;
+              }
+              .chatbot-close {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                background: #ef4444;
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                z-index: 2;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+                font-weight: bold;
+                box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+              }
+              .chatbot-close:hover {
+                background: #dc2626;
+                transform: scale(1.1);
               }
             `}
           </style>
-          <div id="webchat" style={{ width: '500px', height: '500px' }}></div>
+          <div id="webchat">
+            <div className="chatbot-overlay" onClick={closeChatbot}></div>
+            <button className="chatbot-close" onClick={closeChatbot}>×</button>
+          </div>
         </>
       )}
     </div>
