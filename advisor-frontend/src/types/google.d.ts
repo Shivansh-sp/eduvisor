@@ -21,6 +21,7 @@ declare global {
         };
       };
     };
+    botpressWebchat?: any;
   }
 }
 

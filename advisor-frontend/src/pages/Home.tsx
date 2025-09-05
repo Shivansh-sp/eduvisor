@@ -5,7 +5,6 @@ import {
   useParallax, 
   useFloatingAnimation, 
   useMagneticEffect, 
-  useTextReveal,
   useScrollReveal,
   useStaggeredAnimation
 } from '../hooks/useAnimations';
@@ -27,8 +26,8 @@ const Home: React.FC = () => {
   const floatingElement3 = useFloatingAnimation();
   const magneticButton1 = useMagneticEffect<HTMLAnchorElement>(0.2);
   const magneticButton2 = useMagneticEffect<HTMLAnchorElement>(0.2);
-  const { elementRef: titleElementRef, triggerReveal: triggerTitleReveal } = useTextReveal<HTMLHeadingElement>();
-  const { elementRef: subtitleElementRef, triggerReveal: triggerSubtitleReveal } = useTextReveal<HTMLParagraphElement>();
+  const titleElementRef = useRef<HTMLHeadingElement>(null);
+  const subtitleElementRef = useRef<HTMLParagraphElement>(null);
   const { containerRef: featuresContainerRef, animateChildren: animateFeatures } = useStaggeredAnimation<HTMLDivElement>(150);
   const { addElement: addScrollElement } = useScrollReveal();
 
@@ -66,11 +65,7 @@ const Home: React.FC = () => {
         delay: anime.stagger(100)
       }, '-=200');
 
-    // Trigger text reveal animations
-    setTimeout(() => {
-      triggerTitleReveal();
-      triggerSubtitleReveal();
-    }, 500);
+    // No need for text reveal animations - text stays visible
 
     // Create particle system
     if (particlesRef.current) {
@@ -122,7 +117,7 @@ const Home: React.FC = () => {
       animateFeatures();
     }, 2000);
 
-  }, [triggerTitleReveal, triggerSubtitleReveal, animateFeatures]);
+  }, [animateFeatures]);
 
   const features = [
     {
@@ -186,12 +181,14 @@ const Home: React.FC = () => {
             <h1 
               ref={titleElementRef}
               className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent"
+              style={{ opacity: 1 }}
             >
               {user ? `Welcome back, ${user.firstName}!` : 'EduAdvisor'}
             </h1>
             <p 
               ref={subtitleElementRef}
               className="text-xl md:text-3xl mb-12 max-w-4xl mx-auto text-gray-100 leading-relaxed"
+              style={{ opacity: 1 }}
             >
               {user 
                 ? "Continue your journey towards success" 
