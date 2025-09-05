@@ -411,46 +411,46 @@ export const collegesData: College[] = [
     }
   },
 
-  // Private Universities
+  // More Central Universities
   {
     id: 10,
-    name: "BITS Pilani",
-    location: "Pilani",
-    state: "Rajasthan",
-    type: "Private University",
-    category: "Engineering",
-    rating: 4.6,
-    established: 1964,
-    courses: ["Bachelor of Engineering", "Master of Engineering", "Master of Business Administration", "Master of Science", "Doctor of Philosophy"],
-    specializations: ["Computer Science", "Mechanical Engineering", "Electrical Engineering", "Chemical Engineering", "Pharmacy", "Management"],
-    admissionCriteria: ["BITSAT", "GATE", "Direct Admission"],
-    website: "https://www.bits-pilani.ac.in",
-    email: "info@bits-pilani.ac.in",
-    phone: "+91-1596-242-210",
-    address: "Vidya Vihar, Pilani",
-    pincode: "333031",
+    name: "Visva Bharati University",
+    location: "Santiniketan",
+    state: "West Bengal",
+    type: "Central University",
+    category: "General",
+    rating: 4.3,
+    established: 1921,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Bachelor of Fine Arts", "Master of Fine Arts"],
+    specializations: ["Fine Arts", "Music", "Dance", "Literature", "Philosophy", "Mathematics", "Physics", "Chemistry", "Economics"],
+    admissionCriteria: ["CUET", "Direct Admission", "Entrance Exams"],
+    website: "https://www.visvabharati.ac.in",
+    email: "info@visvabharati.ac.in",
+    phone: "+91-3463-262-751",
+    address: "Visva Bharati University, Santiniketan",
+    pincode: "731235",
     nirfRank: 20,
-    aicteApproved: true,
+    aicteApproved: false,
     ugcApproved: true,
     naacAccreditation: "A+",
-    totalStudents: 12000,
-    facultyCount: 600,
-    campusSize: "328 acres",
+    totalStudents: 8000,
+    facultyCount: 400,
+    campusSize: "1133 acres",
     hostelsAvailable: true,
     placementStats: {
-      averagePackage: 900000,
-      highestPackage: 3000000,
-      placementPercentage: 88
+      averagePackage: 400000,
+      highestPackage: 1200000,
+      placementPercentage: 70
     },
     fees: {
-      tuition: 400000,
-      hostel: 80000,
-      other: 50000
+      tuition: 30000,
+      hostel: 20000,
+      other: 10000
     }
   }
 ];
 
-// Additional colleges data (extending the list)
+// Additional Government colleges data (Central and State Government only)
 export const additionalColleges: College[] = [
   // More IITs
   {
@@ -578,41 +578,596 @@ export const additionalColleges: College[] = [
     }
   },
 
-  // More Medical Colleges
+  // More Central Universities from linkingsky.com
   {
-    id: 14,
-    name: "Christian Medical College Vellore",
-    location: "Vellore",
-    state: "Tamil Nadu",
-    type: "Medical College",
-    category: "Medical",
-    rating: 4.7,
-    established: 1900,
-    courses: ["Bachelor of Medicine and Bachelor of Surgery", "Master of Surgery", "Doctor of Medicine", "Bachelor of Science in Nursing", "Master of Science in Nursing"],
-    specializations: ["Cardiology", "Neurology", "Oncology", "Pediatrics", "Gynecology", "Orthopedics", "Radiology", "Anesthesiology"],
-    admissionCriteria: ["NEET UG", "NEET PG", "CMC Vellore Entrance Exam"],
-    website: "https://www.cmch-vellore.edu",
-    email: "info@cmch-vellore.edu",
-    phone: "+91-416-228-2000",
-    address: "Ida Scudder Road, Vellore",
-    pincode: "632004",
-    nirfRank: 5,
+    id: 15,
+    name: "Central University of Andhra Pradesh",
+    location: "Anantapur",
+    state: "Andhra Pradesh",
+    type: "Central University",
+    category: "General",
+    rating: 4.2,
+    established: 2019,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Master of Business Administration", "Master of Technology"],
+    specializations: ["Economics", "Political Science", "History", "Mathematics", "Physics", "Chemistry", "Computer Science", "Management"],
+    admissionCriteria: ["CUET", "Direct Admission", "Entrance Exams"],
+    website: "https://www.cuap.ac.in",
+    email: "info@cuap.ac.in",
+    phone: "+91-8555-257-200",
+    address: "Central University of Andhra Pradesh, Anantapur",
+    pincode: "515002",
     aicteApproved: false,
     ugcApproved: true,
-    naacAccreditation: "A++",
-    totalStudents: 2500,
-    facultyCount: 400,
-    campusSize: "150 acres",
+    naacAccreditation: "A",
+    totalStudents: 3000,
+    facultyCount: 150,
+    campusSize: "200 acres",
     hostelsAvailable: true,
     placementStats: {
-      averagePackage: 1000000,
-      highestPackage: 2500000,
-      placementPercentage: 95
+      averagePackage: 400000,
+      highestPackage: 1200000,
+      placementPercentage: 70
     },
     fees: {
-      tuition: 150000,
-      hostel: 60000,
-      other: 30000
+      tuition: 30000,
+      hostel: 20000,
+      other: 10000
+    }
+  },
+
+  {
+    id: 16,
+    name: "Central University of South Bihar",
+    location: "Gaya",
+    state: "Bihar",
+    type: "Central University",
+    category: "General",
+    rating: 4.1,
+    established: 2009,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Master of Business Administration", "Master of Technology"],
+    specializations: ["Economics", "Political Science", "History", "Mathematics", "Physics", "Chemistry", "Computer Science", "Management"],
+    admissionCriteria: ["CUET", "Direct Admission", "Entrance Exams"],
+    website: "https://www.cusb.ac.in",
+    email: "info@cusb.ac.in",
+    phone: "+91-631-222-9500",
+    address: "Central University of South Bihar, Gaya",
+    pincode: "824236",
+    aicteApproved: false,
+    ugcApproved: true,
+    naacAccreditation: "A",
+    totalStudents: 4000,
+    facultyCount: 200,
+    campusSize: "300 acres",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 350000,
+      highestPackage: 1000000,
+      placementPercentage: 65
+    },
+    fees: {
+      tuition: 25000,
+      hostel: 18000,
+      other: 8000
+    }
+  },
+
+  {
+    id: 17,
+    name: "Tezpur University",
+    location: "Tezpur",
+    state: "Assam",
+    type: "Central University",
+    category: "General",
+    rating: 4.3,
+    established: 1994,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Bachelor of Technology", "Master of Technology", "Master of Business Administration"],
+    specializations: ["Computer Science", "Electronics", "Mechanical Engineering", "Mathematics", "Physics", "Chemistry", "Economics", "Management"],
+    admissionCriteria: ["CUET", "GATE", "Direct Admission"],
+    website: "https://www.tezu.ernet.in",
+    email: "info@tezu.ernet.in",
+    phone: "+91-3712-275-000",
+    address: "Tezpur University, Napaam, Tezpur",
+    pincode: "784028",
+    nirfRank: 45,
+    aicteApproved: true,
+    ugcApproved: true,
+    naacAccreditation: "A+",
+    totalStudents: 6000,
+    facultyCount: 300,
+    campusSize: "262 acres",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 500000,
+      highestPackage: 1500000,
+      placementPercentage: 75
+    },
+    fees: {
+      tuition: 40000,
+      hostel: 25000,
+      other: 12000
+    }
+  },
+
+  // State Universities from linkingsky.com
+  {
+    id: 18,
+    name: "Andhra University",
+    location: "Visakhapatnam",
+    state: "Andhra Pradesh",
+    type: "State University",
+    category: "General",
+    rating: 4.0,
+    established: 1926,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Bachelor of Technology", "Master of Technology", "Master of Business Administration"],
+    specializations: ["Computer Science", "Electronics", "Mechanical Engineering", "Civil Engineering", "Mathematics", "Physics", "Chemistry", "Economics", "Management"],
+    admissionCriteria: ["AP EAMCET", "GATE", "Direct Admission"],
+    website: "https://www.andhrauniversity.edu.in",
+    email: "info@andhrauniversity.edu.in",
+    phone: "+91-891-284-4000",
+    address: "Andhra University, Visakhapatnam",
+    pincode: "530003",
+    nirfRank: 65,
+    aicteApproved: true,
+    ugcApproved: true,
+    naacAccreditation: "A+",
+    totalStudents: 25000,
+    facultyCount: 1200,
+    campusSize: "422 acres",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 400000,
+      highestPackage: 1200000,
+      placementPercentage: 70
+    },
+    fees: {
+      tuition: 50000,
+      hostel: 30000,
+      other: 15000
+    }
+  },
+
+  {
+    id: 19,
+    name: "Gauhati University",
+    location: "Guwahati",
+    state: "Assam",
+    type: "State University",
+    category: "General",
+    rating: 4.1,
+    established: 1948,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Bachelor of Technology", "Master of Technology", "Master of Business Administration"],
+    specializations: ["Computer Science", "Electronics", "Mathematics", "Physics", "Chemistry", "Economics", "Political Science", "History", "Management"],
+    admissionCriteria: ["Assam CEE", "GATE", "Direct Admission"],
+    website: "https://www.gauhati.ac.in",
+    email: "info@gauhati.ac.in",
+    phone: "+91-361-257-0410",
+    address: "Gauhati University, Guwahati",
+    pincode: "781014",
+    nirfRank: 55,
+    aicteApproved: true,
+    ugcApproved: true,
+    naacAccreditation: "A+",
+    totalStudents: 20000,
+    facultyCount: 800,
+    campusSize: "300 acres",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 350000,
+      highestPackage: 1000000,
+      placementPercentage: 65
+    },
+    fees: {
+      tuition: 40000,
+      hostel: 25000,
+      other: 12000
+    }
+  },
+
+  {
+    id: 20,
+    name: "Calcutta University",
+    location: "Kolkata",
+    state: "West Bengal",
+    type: "State University",
+    category: "General",
+    rating: 4.2,
+    established: 1857,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Bachelor of Technology", "Master of Technology", "Master of Business Administration"],
+    specializations: ["Computer Science", "Electronics", "Mathematics", "Physics", "Chemistry", "Economics", "Political Science", "History", "Management"],
+    admissionCriteria: ["WBJEE", "GATE", "Direct Admission"],
+    website: "https://www.caluniv.ac.in",
+    email: "info@caluniv.ac.in",
+    phone: "+91-33-2241-0071",
+    address: "Calcutta University, Kolkata",
+    pincode: "700073",
+    nirfRank: 40,
+    aicteApproved: true,
+    ugcApproved: true,
+    naacAccreditation: "A+",
+    totalStudents: 30000,
+    facultyCount: 1500,
+    campusSize: "Multiple Campuses",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 450000,
+      highestPackage: 1300000,
+      placementPercentage: 72
+    },
+    fees: {
+      tuition: 45000,
+      hostel: 28000,
+      other: 14000
+    }
+  },
+
+  {
+    id: 21,
+    name: "Presidency University",
+    location: "Kolkata",
+    state: "West Bengal",
+    type: "State University",
+    category: "General",
+    rating: 4.4,
+    established: 1817,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Master of Philosophy", "Doctor of Philosophy"],
+    specializations: ["Mathematics", "Physics", "Chemistry", "Economics", "Political Science", "History", "English", "Bengali"],
+    admissionCriteria: ["CUET", "Direct Admission", "Entrance Exams"],
+    website: "https://www.presidencyuniversity.ac.in",
+    email: "info@presidencyuniversity.ac.in",
+    phone: "+91-33-2241-0071",
+    address: "Presidency University, Kolkata",
+    pincode: "700073",
+    nirfRank: 35,
+    aicteApproved: false,
+    ugcApproved: true,
+    naacAccreditation: "A+",
+    totalStudents: 5000,
+    facultyCount: 300,
+    campusSize: "50 acres",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 500000,
+      highestPackage: 1500000,
+      placementPercentage: 80
+    },
+    fees: {
+      tuition: 35000,
+      hostel: 20000,
+      other: 10000
+    }
+  },
+
+  {
+    id: 22,
+    name: "Banaras Hindu University",
+    location: "Varanasi",
+    state: "Uttar Pradesh",
+    type: "Central University",
+    category: "General",
+    rating: 4.3,
+    established: 1916,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Bachelor of Technology", "Master of Technology", "Bachelor of Medicine and Bachelor of Surgery"],
+    specializations: ["Computer Science", "Electronics", "Mechanical Engineering", "Civil Engineering", "Mathematics", "Physics", "Chemistry", "Economics", "Medicine"],
+    admissionCriteria: ["CUET", "GATE", "NEET", "Direct Admission"],
+    website: "https://www.bhu.ac.in",
+    email: "info@bhu.ac.in",
+    phone: "+91-542-236-8558",
+    address: "Banaras Hindu University, Varanasi",
+    pincode: "221005",
+    nirfRank: 15,
+    aicteApproved: true,
+    ugcApproved: true,
+    naacAccreditation: "A++",
+    totalStudents: 40000,
+    facultyCount: 2000,
+    campusSize: "1300 acres",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 500000,
+      highestPackage: 1500000,
+      placementPercentage: 75
+    },
+    fees: {
+      tuition: 40000,
+      hostel: 25000,
+      other: 12000
+    }
+  },
+
+  {
+    id: 23,
+    name: "Aligarh Muslim University",
+    location: "Aligarh",
+    state: "Uttar Pradesh",
+    type: "Central University",
+    category: "General",
+    rating: 4.2,
+    established: 1920,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Bachelor of Technology", "Master of Technology", "Bachelor of Medicine and Bachelor of Surgery"],
+    specializations: ["Computer Science", "Electronics", "Mechanical Engineering", "Civil Engineering", "Mathematics", "Physics", "Chemistry", "Economics", "Medicine"],
+    admissionCriteria: ["CUET", "GATE", "NEET", "Direct Admission"],
+    website: "https://www.amu.ac.in",
+    email: "info@amu.ac.in",
+    phone: "+91-571-270-0920",
+    address: "Aligarh Muslim University, Aligarh",
+    pincode: "202002",
+    nirfRank: 25,
+    aicteApproved: true,
+    ugcApproved: true,
+    naacAccreditation: "A+",
+    totalStudents: 35000,
+    facultyCount: 1800,
+    campusSize: "467 acres",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 450000,
+      highestPackage: 1300000,
+      placementPercentage: 70
+    },
+    fees: {
+      tuition: 35000,
+      hostel: 22000,
+      other: 10000
+    }
+  },
+
+  {
+    id: 24,
+    name: "Jamia Millia Islamia",
+    location: "New Delhi",
+    state: "Delhi",
+    type: "Central University",
+    category: "General",
+    rating: 4.1,
+    established: 1920,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Bachelor of Technology", "Master of Technology", "Bachelor of Medicine and Bachelor of Surgery"],
+    specializations: ["Computer Science", "Electronics", "Mechanical Engineering", "Civil Engineering", "Mathematics", "Physics", "Chemistry", "Economics", "Medicine"],
+    admissionCriteria: ["CUET", "GATE", "NEET", "Direct Admission"],
+    website: "https://www.jmi.ac.in",
+    email: "info@jmi.ac.in",
+    phone: "+91-11-2698-1717",
+    address: "Jamia Millia Islamia, New Delhi",
+    pincode: "110025",
+    nirfRank: 30,
+    aicteApproved: true,
+    ugcApproved: true,
+    naacAccreditation: "A+",
+    totalStudents: 25000,
+    facultyCount: 1200,
+    campusSize: "200 acres",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 400000,
+      highestPackage: 1200000,
+      placementPercentage: 68
+    },
+    fees: {
+      tuition: 30000,
+      hostel: 20000,
+      other: 8000
+    }
+  },
+
+  {
+    id: 25,
+    name: "Punjab University",
+    location: "Chandigarh",
+    state: "Punjab",
+    type: "State University",
+    category: "General",
+    rating: 4.0,
+    established: 1882,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Bachelor of Technology", "Master of Technology", "Master of Business Administration"],
+    specializations: ["Computer Science", "Electronics", "Mechanical Engineering", "Civil Engineering", "Mathematics", "Physics", "Chemistry", "Economics", "Management"],
+    admissionCriteria: ["PUCET", "GATE", "Direct Admission"],
+    website: "https://www.puchd.ac.in",
+    email: "info@puchd.ac.in",
+    phone: "+91-172-253-4000",
+    address: "Punjab University, Chandigarh",
+    pincode: "160014",
+    nirfRank: 50,
+    aicteApproved: true,
+    ugcApproved: true,
+    naacAccreditation: "A+",
+    totalStudents: 20000,
+    facultyCount: 1000,
+    campusSize: "550 acres",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 400000,
+      highestPackage: 1200000,
+      placementPercentage: 70
+    },
+    fees: {
+      tuition: 40000,
+      hostel: 25000,
+      other: 12000
+    }
+  },
+
+  // More State Universities from linkingsky.com
+  {
+    id: 26,
+    name: "Osmania University",
+    location: "Hyderabad",
+    state: "Telangana",
+    type: "State University",
+    category: "General",
+    rating: 4.1,
+    established: 1918,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Bachelor of Technology", "Master of Technology", "Master of Business Administration"],
+    specializations: ["Computer Science", "Electronics", "Mechanical Engineering", "Civil Engineering", "Mathematics", "Physics", "Chemistry", "Economics", "Management"],
+    admissionCriteria: ["TS EAMCET", "GATE", "Direct Admission"],
+    website: "https://www.osmania.ac.in",
+    email: "info@osmania.ac.in",
+    phone: "+91-40-2768-2222",
+    address: "Osmania University, Hyderabad",
+    pincode: "500007",
+    nirfRank: 60,
+    aicteApproved: true,
+    ugcApproved: true,
+    naacAccreditation: "A+",
+    totalStudents: 30000,
+    facultyCount: 1500,
+    campusSize: "1600 acres",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 450000,
+      highestPackage: 1300000,
+      placementPercentage: 72
+    },
+    fees: {
+      tuition: 45000,
+      hostel: 28000,
+      other: 14000
+    }
+  },
+
+  {
+    id: 27,
+    name: "Mysore University",
+    location: "Mysore",
+    state: "Karnataka",
+    type: "State University",
+    category: "General",
+    rating: 4.0,
+    established: 1916,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Bachelor of Technology", "Master of Technology", "Master of Business Administration"],
+    specializations: ["Computer Science", "Electronics", "Mechanical Engineering", "Civil Engineering", "Mathematics", "Physics", "Chemistry", "Economics", "Management"],
+    admissionCriteria: ["KCET", "GATE", "Direct Admission"],
+    website: "https://www.uni-mysore.ac.in",
+    email: "info@uni-mysore.ac.in",
+    phone: "+91-821-241-9000",
+    address: "Mysore University, Mysore",
+    pincode: "570005",
+    nirfRank: 70,
+    aicteApproved: true,
+    ugcApproved: true,
+    naacAccreditation: "A+",
+    totalStudents: 25000,
+    facultyCount: 1200,
+    campusSize: "739 acres",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 400000,
+      highestPackage: 1200000,
+      placementPercentage: 70
+    },
+    fees: {
+      tuition: 40000,
+      hostel: 25000,
+      other: 12000
+    }
+  },
+
+  {
+    id: 28,
+    name: "Madras University",
+    location: "Chennai",
+    state: "Tamil Nadu",
+    type: "State University",
+    category: "General",
+    rating: 4.1,
+    established: 1857,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Bachelor of Technology", "Master of Technology", "Master of Business Administration"],
+    specializations: ["Computer Science", "Electronics", "Mechanical Engineering", "Civil Engineering", "Mathematics", "Physics", "Chemistry", "Economics", "Management"],
+    admissionCriteria: ["TANCET", "GATE", "Direct Admission"],
+    website: "https://www.unom.ac.in",
+    email: "info@unom.ac.in",
+    phone: "+91-44-2536-9000",
+    address: "Madras University, Chennai",
+    pincode: "600005",
+    nirfRank: 55,
+    aicteApproved: true,
+    ugcApproved: true,
+    naacAccreditation: "A+",
+    totalStudents: 35000,
+    facultyCount: 1800,
+    campusSize: "Multiple Campuses",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 450000,
+      highestPackage: 1300000,
+      placementPercentage: 72
+    },
+    fees: {
+      tuition: 45000,
+      hostel: 28000,
+      other: 14000
+    }
+  },
+
+  {
+    id: 29,
+    name: "Mumbai University",
+    location: "Mumbai",
+    state: "Maharashtra",
+    type: "State University",
+    category: "General",
+    rating: 4.0,
+    established: 1857,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Bachelor of Technology", "Master of Technology", "Master of Business Administration"],
+    specializations: ["Computer Science", "Electronics", "Mechanical Engineering", "Civil Engineering", "Mathematics", "Physics", "Chemistry", "Economics", "Management"],
+    admissionCriteria: ["MHT CET", "GATE", "Direct Admission"],
+    website: "https://www.mu.ac.in",
+    email: "info@mu.ac.in",
+    phone: "+91-22-2654-3000",
+    address: "Mumbai University, Mumbai",
+    pincode: "400032",
+    nirfRank: 65,
+    aicteApproved: true,
+    ugcApproved: true,
+    naacAccreditation: "A+",
+    totalStudents: 40000,
+    facultyCount: 2000,
+    campusSize: "Multiple Campuses",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 400000,
+      highestPackage: 1200000,
+      placementPercentage: 70
+    },
+    fees: {
+      tuition: 40000,
+      hostel: 25000,
+      other: 12000
+    }
+  },
+
+  {
+    id: 30,
+    name: "Pune University",
+    location: "Pune",
+    state: "Maharashtra",
+    type: "State University",
+    category: "General",
+    rating: 4.2,
+    established: 1949,
+    courses: ["Bachelor of Arts", "Master of Arts", "Bachelor of Science", "Master of Science", "Bachelor of Technology", "Master of Technology", "Master of Business Administration"],
+    specializations: ["Computer Science", "Electronics", "Mechanical Engineering", "Civil Engineering", "Mathematics", "Physics", "Chemistry", "Economics", "Management"],
+    admissionCriteria: ["MHT CET", "GATE", "Direct Admission"],
+    website: "https://www.unipune.ac.in",
+    email: "info@unipune.ac.in",
+    phone: "+91-20-2569-0000",
+    address: "Pune University, Pune",
+    pincode: "411007",
+    nirfRank: 45,
+    aicteApproved: true,
+    ugcApproved: true,
+    naacAccreditation: "A+",
+    totalStudents: 30000,
+    facultyCount: 1500,
+    campusSize: "411 acres",
+    hostelsAvailable: true,
+    placementStats: {
+      averagePackage: 500000,
+      highestPackage: 1500000,
+      placementPercentage: 75
+    },
+    fees: {
+      tuition: 45000,
+      hostel: 28000,
+      other: 14000
     }
   }
 ];

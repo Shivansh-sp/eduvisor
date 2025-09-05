@@ -109,17 +109,17 @@ const Colleges: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Indian Colleges & Universities Directory</h1>
-          <p className="text-gray-600 text-lg">Discover top colleges and universities across India</p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">Government Colleges & Universities Directory</h1>
+          <p className="text-gray-600 text-lg">Discover Central and State Government institutions across India</p>
           <div className="mt-4 flex justify-center space-x-4">
             <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-              {allColleges.length} Institutions
+              {allColleges.length} Government Institutions
             </span>
             <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
               All States Covered
             </span>
             <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">
-              Real-time Data
+              Central & State Universities
             </span>
           </div>
         </div>
