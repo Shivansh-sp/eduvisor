@@ -204,7 +204,7 @@ const RegisterEnhanced: React.FC = () => {
             Create your account
           </h2>
           <p className="text-blue-100 text-lg">
-            Join thousands of students on their career journey
+            Join students on their career journey
           </p>
       </div>
 

@@ -127,19 +127,19 @@ const Home: React.FC = () => {
   const features = [
     {
       title: "Aptitude Assessment",
-      description: "Discover your strengths and interests through our comprehensive assessment tools.",
+      description: "Discover your strengths and interests through our assessment tools.",
       icon: "🧠",
       link: "/assessment"
     },
     {
       title: "Career Mapping",
-      description: "Explore career paths that align with your skills and aspirations.",
+      description: "Explore career paths that match your skills and interests.",
       icon: "🎯",
       link: "/careers"
     },
     {
       title: "College Directory",
-      description: "Find the perfect government colleges and universities for your goals.",
+      description: "Find government colleges and universities for your goals.",
       icon: "🏛️",
       link: "/colleges"
     }
@@ -194,8 +194,8 @@ const Home: React.FC = () => {
               className="text-xl md:text-3xl mb-12 max-w-4xl mx-auto text-gray-100 leading-relaxed"
             >
               {user 
-                ? "Continue your journey towards educational and career success" 
-                : "Your comprehensive guide to educational and career success"
+                ? "Continue your journey towards success" 
+                : "Your guide to educational and career success"
               }
             </p>
             <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -281,7 +281,7 @@ const Home: React.FC = () => {
               Why Choose EduAdvisor?
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              We provide comprehensive tools and guidance to help you make informed decisions about your education and career.
+              We provide tools and guidance to help you make decisions about your education and career.
             </p>
           </div>
           
@@ -340,7 +340,7 @@ const Home: React.FC = () => {
             Ready to Start Your Journey?
           </h2>
           <p className="text-xl md:text-2xl mb-12 text-gray-100 max-w-3xl mx-auto leading-relaxed">
-            Join thousands of students who have found their path with EduAdvisor.
+            Join students who have found their path with EduAdvisor.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link

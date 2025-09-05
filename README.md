@@ -1,16 +1,16 @@
-# EduAdvisor - AI-Powered Career Guidance Platform
+# EduAdvisor - Career Guidance Platform
 
-A comprehensive career guidance platform that helps students discover their ideal career paths using scientifically-based Holland Codes (RIASEC) assessment. The platform provides personalized recommendations for careers, colleges, and educational pathways with a focus on government institutions and real-world data.
+A career guidance platform that helps students discover their ideal career paths using Holland Codes (RIASEC) assessment. The platform provides personalized recommendations for careers, colleges, and educational pathways with a focus on government institutions.
 
 ## 🚀 Features
 
-### 🧠 Holland Codes Assessment
-- **3-Part Comprehensive Assessment**:
+### 🧠 Career Assessment
+- **Multi-part Assessment**:
   - Interest Areas (10 questions)
   - Aptitude Indicators (7 questions) 
   - Values & Preferences (4 questions)
-- **6 Career Profiles**: Science & Tech, Creative & Imaginative, People-Centered, Business & Management, Hands-On Practical, Research & Service
-- **Personalized Recommendations**: Careers, degrees, and future scope based on assessment results
+- **Career Profiles**: Science & Tech, Creative, People-Centered, Business, Hands-On, Research
+- **Recommendations**: Careers, degrees, and future scope based on assessment results
 
 ### 🎯 Career Explorer
 - Browse and search career options
@@ -18,30 +18,28 @@ A comprehensive career guidance platform that helps students discover their idea
 - Save favorite careers to profile
 - Filter by categories and interests
 
-### 🏛️ Government College Directory
-- Comprehensive database of 30+ Central and State Government institutions
-- Real data from official sources including IITs, NITs, Central Universities, and State Universities
-- Advanced search and filtering by location, type, courses, and NIRF rankings
-- Detailed information including placement stats, fees, admission criteria, and contact details
-- Save preferred colleges to personal profile
+### 🏛️ College Directory
+- Database of Central and State Government institutions
+- Includes IITs, NITs, Central Universities, and State Universities
+- Search and filtering by location, type, courses, and rankings
+- Information including placement stats, fees, admission criteria, and contact details
+- Save preferred colleges to profile
 
-### 📊 Functional Dashboard
-- Assessment results display with Holland Code scores
+### 📊 Dashboard
+- Assessment results with Holland Code scores
 - Saved careers and colleges overview
-- Progress tracking and statistics
-- Quick access to all platform features
+- Quick access to platform features
 
-### 🔐 Authentication System
+### 🔐 Authentication
 - User registration and login
-- Real Google OAuth integration
+- Google OAuth integration
 - Profile management with photo upload
-- Secure JWT-based authentication
+- JWT-based authentication
 
-### 🎨 Modern UI/UX
-- Beautiful animations using Anime.js
+### 🎨 UI/UX
+- Animations using Anime.js
 - Responsive design with Tailwind CSS
-- Glassmorphism effects and smooth transitions
-- Interactive elements with magnetic effects
+- Smooth transitions and interactive elements
 
 ## 🛠️ Technology Stack
 
@@ -137,7 +135,7 @@ eduvisor/
 
 ## 🧪 Assessment Details
 
-The platform uses the scientifically-proven Holland Codes (RIASEC) model:
+The platform uses the Holland Codes (RIASEC) model:
 
 - **R (Realistic)**: Practical, technical, hands-on
 - **I (Investigative)**: Analytical, research-oriented
@@ -146,11 +144,10 @@ The platform uses the scientifically-proven Holland Codes (RIASEC) model:
 - **E (Enterprising)**: Leadership, management, business
 - **C (Conventional)**: Organizing, finance, detail-focused
 
-Based on assessment results, users receive personalized career profiles with:
+Based on assessment results, users receive career profiles with:
 - Recommended career paths
 - Suitable degree programs
 - Future scope and opportunities
-- Government and private sector options
 
 ## 🚀 Live Demo
 
@@ -178,12 +175,7 @@ The application is deployed and available at:
 
 ## 🌐 Deployment
 
-For production deployment instructions, see [deploy.md](advisor-frontend/deploy.md)
-
-### Quick Deploy
-- **Frontend**: Deploy to Netlify with `advisor-frontend` as base directory
-- **Backend**: Deploy to Railway with `advisor-backend` as root directory
-- **Database**: Use MongoDB Atlas for production database
+The application can be deployed to any hosting platform that supports Node.js and React applications. Common platforms include Netlify, Vercel, Railway, and Render.
 
 ## 🤝 Contributing
 
@@ -199,18 +191,18 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📊 Data Sources
 
-- **College Data**: Sourced from official government directories and AISHE (All India Survey on Higher Education)
-- **Career Information**: Based on industry standards and government career guidance resources
-- **Assessment Model**: Holland Codes (RIASEC) - scientifically validated career assessment framework
-- **Institution Rankings**: NIRF (National Institutional Ranking Framework) data
+- **College Data**: Government directories and AISHE
+- **Career Information**: Industry standards and career guidance resources
+- **Assessment Model**: Holland Codes (RIASEC) career assessment framework
+- **Institution Rankings**: NIRF data
 
 ## 🙏 Acknowledgments
 
 - Holland Codes (RIASEC) model for career assessment
 - AISHE and government education directories for college data
-- Anime.js for beautiful animations
-- Tailwind CSS for modern styling
-- React community for excellent documentation
+- Anime.js for animations
+- Tailwind CSS for styling
+- React community for documentation
 
 ## 📞 Support
 
@@ -218,4 +210,4 @@ If you have any questions or need help, please open an issue on GitHub or contac
 
 ---
 
-**EduAdvisor** - Empowering students to discover their ideal career paths through science-based assessment and personalized guidance.
+**EduAdvisor** - Helping students discover their career paths through assessment and guidance.
