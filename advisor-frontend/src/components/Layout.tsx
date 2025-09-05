@@ -42,98 +42,35 @@ const Layout: React.FC = () => {
     if (!isAuthPage) {
       loadChatbot();
     }
-
-    // Add keyboard event listener for Escape key
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        closeChatbot();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyPress);
-    return () => {
-      document.removeEventListener('keydown', handleKeyPress);
-    };
   }, [location.pathname, enterPage, isAuthPage]);
 
-  // Chatbot functions
-  const openChatbot = () => {
-    const webchat = document.getElementById('webchat');
-    if (webchat) {
-      webchat.classList.add('show');
-    }
-  };
-
-  const closeChatbot = () => {
-    const webchat = document.getElementById('webchat');
-    if (webchat) {
-      webchat.classList.remove('show');
-    }
-  };
 
   const loadChatbot = () => {
     // Check if chatbot is already loaded
-    if (window.botpress) {
+    if (window.botpressWebchat) {
       console.log('Chatbot already loaded');
       return;
     }
 
     console.log('Loading chatbot...');
 
-    // Load Botpress script
-    const script = document.createElement('script');
-    script.src = 'https://cdn.botpress.cloud/webchat/v3.2/inject.js';
-    script.onload = () => {
-      console.log('Botpress script loaded');
-      // Initialize chatbot after script loads
-      if (window.botpress) {
-        console.log('Initializing chatbot...');
-        
-        window.botpress.on("webchat:ready", () => {
-          console.log('Chatbot ready!');
-        });
+    // Load Botpress inject script
+    const injectScript = document.createElement('script');
+    injectScript.src = 'https://cdn.botpress.cloud/webchat/v3.2/inject.js';
+    injectScript.defer = true;
+    document.head.appendChild(injectScript);
 
-        window.botpress.init({
-        "botId": "292ca00c-8fa6-48f6-8510-a171dac07258",
-        "configuration": {
-          "version": "v2",
-          "composerPlaceholder": "",
-          "botName": "Eduvisor Bot",
-          "botAvatar": "https://files.bpcontent.cloud/2025/09/04/14/20250904143454-5VGRCXHN.jpeg",
-          "botDescription": "I'm your Career & Education Guide. I can help you discover the right subject stream, explore courses in nearby government colleges, and understand career options. Let's plan your future together!",
-          "fabImage": "https://files.bpcontent.cloud/2025/09/04/14/20250904143454-5VGRCXHN.jpeg",
-          "website": {},
-          "email": {
-            "title": "shivanshpushkarna@gmail.com",
-            "link": "shivanshpushkarna@gmail.com"
-          },
-          "phone": {
-            "title": "+91 7696786003",
-            "link": "+91 7696786003"
-          },
-          "termsOfService": {},
-          "privacyPolicy": {},
-          "color": "#A7C",
-          "variant": "soft",
-          "headerVariant": "solid",
-          "themeMode": "light",
-          "fontFamily": "AR One Sans",
-          "radius": 3,
-          "feedbackEnabled": true,
-          "footer": "[By team Code Tyrans]",
-          "allowFileUpload": true
-        },
-        "clientId": "e76f290a-f8f5-457c-9d7f-87dadbce3ac8",
-        "selector": "#webchat"
-        });
-      } else {
-        console.error('Botpress not available after script load');
-      }
+    // Load Botpress configuration script
+    const configScript = document.createElement('script');
+    configScript.src = 'https://files.bpcontent.cloud/2025/03/29/10/20250329102306-6BV2I5JN.js';
+    configScript.defer = true;
+    configScript.onload = () => {
+      console.log('Botpress configuration loaded');
     };
-    script.onerror = () => {
-      console.error('Failed to load Botpress script');
+    configScript.onerror = () => {
+      console.error('Failed to load Botpress configuration');
     };
-    document.head.appendChild(script);
+    document.head.appendChild(configScript);
   };
 
   if (isAuthPage) {
@@ -215,16 +152,6 @@ const Layout: React.FC = () => {
                   <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full"></div>
                 )}
               </Link>
-              
-              {/* Chatbot Button */}
-              <button
-                onClick={openChatbot}
-                className="relative px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 text-gray-700 hover:text-blue-600 hover:bg-blue-50/50 flex items-center space-x-2"
-                title="Open Chat Assistant"
-              >
-                <span>💬</span>
-                <span>Chat</span>
-              </button>
               {loading ? (
                 <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
               ) : user ? (
@@ -319,78 +246,29 @@ const Layout: React.FC = () => {
         </div>
       </footer>
 
-      {/* Chatbot Container - Only on non-auth pages */}
+      {/* Chatbot - Only on non-auth pages */}
       {!isAuthPage && (
         <>
           <style>
             {`
-              #webchat {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                z-index: 9999;
-                background: rgba(0, 0, 0, 0.5);
-                display: none;
-                align-items: center;
-                justify-content: center;
+              /* Custom styling for Botpress chat bubble */
+              .bp-widget {
+                z-index: 1000 !important;
               }
-              #webchat.show {
-                display: flex !important;
+              .bp-widget .bp-widget-button {
+                background: #3B82F6 !important;
+                border-radius: 50% !important;
+                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
               }
-              #webchat .bpWebchat {
-                position: relative;
-                width: 90%;
-                max-width: 800px;
-                height: 80%;
-                max-height: 600px;
-                border-radius: 12px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-                overflow: hidden;
-                background: white;
+              .bp-widget .bp-widget-button:hover {
+                transform: scale(1.1) !important;
+                transition: transform 0.2s ease !important;
               }
-              #webchat .bpFab {
-                display: none !important;
-              }
-              .chatbot-overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: transparent;
-                z-index: 1;
-              }
-              .chatbot-close {
-                position: absolute;
-                top: 15px;
-                right: 15px;
-                background: #ef4444;
-                color: white;
-                border: none;
-                border-radius: 50%;
-                width: 40px;
-                height: 40px;
-                cursor: pointer;
-                z-index: 2;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 20px;
-                font-weight: bold;
-                box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-              }
-              .chatbot-close:hover {
-                background: #dc2626;
-                transform: scale(1.1);
+              .bp-widget .bp-widget-button svg {
+                fill: white !important;
               }
             `}
           </style>
-          <div id="webchat">
-            <div className="chatbot-overlay" onClick={closeChatbot}></div>
-            <button className="chatbot-close" onClick={closeChatbot}>×</button>
-          </div>
         </>
       )}
     </div>
